@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <h1 class="text-2xl text-center m-5">Todo List</h1>
+      <div class="flex mb-5">
+        <input type="text" id="task-input" class="p-2 border rounded w-1/2">
+        <button id="add-task-btn" class="bg-blue-500 p-2 rounded text-white">Add Task</button>
+      </div>
+      <ul id="task-list" class="list-group p-5">
+      </ul>
+    </div>    
+  </body>
+</html>
+
+<script lang="ts">
+  const taskInput = document.getElementById("task-input") as HTMLInputElement;
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const taskList = document.getElementById("task-list");
+
+  addTaskBtn.addEventListener("click", () => {
+    addTask(taskInput.value);
+    renderTasks();
+    taskInput.value = "";
+  });
+
+  const renderTasks = () => {
+    taskList.innerHTML = "";
+    tasks.forEach(task => {
+      const li = document.createElement("li");
+      li.classList.add("list-group-item");
+      li.innerText = task.name;
+      taskList.appendChild(li);
+    });
+  };
+
+</script>
